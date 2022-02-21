@@ -13,7 +13,9 @@ public class Professor {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(nullable = false)
 	private Long id;
+	@Column(nullable = false)
 	private String name;
 	@Column(length = 11, unique = true, nullable = false)
 	private String cpf;

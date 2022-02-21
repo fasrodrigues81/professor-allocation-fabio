@@ -2,6 +2,8 @@ package com.project.professor.allocation.fabio.entity;
 
 import java.time.DayOfWeek;
 import java.util.Date;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -16,13 +18,18 @@ public class Allocation {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(nullable = false)
 	private Long id;
 	@Enumerated(EnumType.STRING)
+	@Column(nullable = false)
 	private DayOfWeek day;
 	@Temporal(TemporalType.TIME)
+	@Column(nullable = false)
 	private Date start;
 	@Temporal(TemporalType.TIME)
+	@Column(nullable = false)
 	private Date end;
+	@Column(nullable = false)
 	private Long courseId;
 
 	public Long getId() {
