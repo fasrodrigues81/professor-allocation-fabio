@@ -1,4 +1,4 @@
-package com.project.professor.allocation.fabio.entity;
+package com.project.professor.allocation.entity;
 
 import java.time.DayOfWeek;
 
@@ -16,40 +16,39 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-
 @Entity
 public class Allocation {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false)
 	private DayOfWeek day;
-	
+
 	@Temporal(TemporalType.TIME)
 	@Column(nullable = false)
 	private Date start;
-	
+
 	@Temporal(TemporalType.TIME)
 	@Column(nullable = false)
 	private Date end;
-	
+
 	@Column(name = "course_id", nullable = false)
 	private Long courseId;
-	
+
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "course_id", updatable = false, insertable = false, nullable = false)
-	private Course Course;
-	
+	private Course course;
+
 	@Column(name = "professor_id", nullable = false)
 	private Long professorId;
-			
+
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "professor_id", updatable = false, insertable = false, nullable = false)
-	private Professor Prof;
-		
+	private Professor prof;
+
 	public Long getId() {
 		return id;
 	}
@@ -87,15 +86,15 @@ public class Allocation {
 	}
 
 	public void setCourseId(Long courseId) {
-		this.courseId = courseId;	
+		this.courseId = courseId;
 	}
 
 	public Course getCourse() {
-		return Course;
+		return course;
 	}
 
 	public void setCourse(Course course) {
-		Course = course;
+		this.course = course;
 	}
 
 	public Long getProfessorId() {
@@ -107,12 +106,21 @@ public class Allocation {
 	}
 
 	public Professor getProf() {
-		return Prof;
+		return prof;
 	}
 
 	public void setProf(Professor prof) {
-		Prof = prof;
+		this.prof = prof;
 	}
 
-		
+	@Override
+	public String toString() {
+		return "Allocation [id=" + id + ", day=" + day + ", start=" + start + ", end=" + end + ", courseId=" + courseId
+				+ ", course=" + course + ", professorId=" + professorId + ", prof=" + prof + ", getId()=" + getId()
+				+ ", getDay()=" + getDay() + ", getStart()=" + getStart() + ", getEnd()=" + getEnd()
+				+ ", getCourseId()=" + getCourseId() + ", getCourse()=" + getCourse() + ", getProfessorId()="
+				+ getProfessorId() + ", getProf()=" + getProf() + ", getClass()=" + getClass() + ", hashCode()="
+				+ hashCode() + ", toString()=" + super.toString() + "]";
+	}
+
 }

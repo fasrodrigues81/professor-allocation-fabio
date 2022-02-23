@@ -1,6 +1,7 @@
-package com.project.professor.allocation.fabio.entity;
+package com.project.professor.allocation.entity;
 
 import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,19 +15,19 @@ public class Professor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(nullable = false)
 	private String name;
-	
+
 	@Column(length = 11, unique = true, nullable = false)
 	private String cpf;
-	
+
 	@Column(name = "department_id", nullable = false)
 	private Long departmentId;
-	
+
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "department_id", updatable = false, insertable = false, nullable = false)
-	private Departament Dept;
+	private Department dept;
 
 	public Long getId() {
 		return id;
@@ -58,6 +59,14 @@ public class Professor {
 
 	public void setDepartmentId(Long departmentId) {
 		this.departmentId = departmentId;
+	}
+
+	@Override
+	public String toString() {
+		return "Professor [id=" + id + ", name=" + name + ", cpf=" + cpf + ", departmentId=" + departmentId + ", dept="
+				+ dept + ", getId()=" + getId() + ", getName()=" + getName() + ", getCpf()=" + getCpf()
+				+ ", getDepartmentId()=" + getDepartmentId() + ", getClass()=" + getClass() + ", hashCode()="
+				+ hashCode() + ", toString()=" + super.toString() + "]";
 	}
 
 }

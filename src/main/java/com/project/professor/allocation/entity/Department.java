@@ -1,4 +1,4 @@
-package com.project.professor.allocation.fabio.entity;
+package com.project.professor.allocation.entity;
 
 import javax.persistence.Column;
 
@@ -8,14 +8,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Course {
+public class Department {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
 	@Column(nullable = false, unique = true)
 	private String name;
-
+	
 	public Long getId() {
 		return id;
 	}
@@ -32,4 +33,12 @@ public class Course {
 		this.name = name;
 	}
 
+	@Override
+	public String toString() {
+		return "Department [id=" + id + ", name=" + name + ", getId()=" + getId() + ", getName()=" + getName()
+				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
+				+ "]";
+	}
+
+	
 }
