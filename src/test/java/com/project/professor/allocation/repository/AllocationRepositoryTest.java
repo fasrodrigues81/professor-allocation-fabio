@@ -11,8 +11,6 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.TestPropertySource;
 
-import com.project.professor.allocation.repository.AllocationRepository;
-
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)
 @Rollback(false)
@@ -27,7 +25,7 @@ public class AllocationRepositoryTest {
     @Test
     public void findAll() {
         // Act
-        
+            
 
         // Print
         
