@@ -1,5 +1,8 @@
 package com.project.professor.allocation.service;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
 import com.project.professor.allocation.entity.Allocation;
@@ -26,7 +29,6 @@ public class AllocationService {
 		Optional<Allocation> optional = allocationRepository.findById(id);
 		Allocation allocation = optional.orElse(null);
 		return allocation;
-
 	}
 
 	// CRUD: CREATE
@@ -46,17 +48,16 @@ public class AllocationService {
 			return null;
 		}
 	}
-	
-	//CRUD : DELETE
-	public void deleteById(Long id)
-	{
-		if (allocationRepository.existsById(id))
-		{
+
+	// CRUD : DELETE
+	public void deleteById(Long id) {
+		if (allocationRepository.existsById(id)) {
 			allocationRepository.deleteById(id);
-	
-	//CRUD : DELETE ALL
-	public void deletAll()
-	{
+		}
+	}
+
+	// CRUD : DELETE ALL
+	public void deletAll() {
 		allocationRepository.deleteAllInBatch();
 	}
-		
+}
